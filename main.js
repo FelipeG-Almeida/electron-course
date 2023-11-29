@@ -10,7 +10,7 @@ let mainWindow;
 function createWindow() {
 	let state = windowStateKeeper({
 		defaultWidth: 500,
-		defaultHeight650,
+		defaultHeight: 650,
 	});
 
 	mainWindow = new BrowserWindow({
@@ -18,6 +18,9 @@ function createWindow() {
 		y: state.y,
 		width: state.width,
 		height: state.height,
+		minWidth: 350,
+		maxWidth: 650,
+		minHeight: 300,
 		webPreferences: {
 			// --- !! IMPORTANT !! ---
 			// Disable 'contextIsolation' to allow 'nodeIntegration'
@@ -29,6 +32,8 @@ function createWindow() {
 
 	// Load index.html into the new BrowserWindow
 	mainWindow.loadFile('renderer/main.html');
+
+	state.manage(mainWindow);
 
 	// Open DevTools - Remove for PRODUCTION!
 	mainWindow.webContents.openDevTools();
