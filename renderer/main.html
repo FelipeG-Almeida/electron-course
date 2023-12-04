@@ -11,17 +11,18 @@
 	<body>
 		<header>
 			<button id="show-modal">+</button>
-            <input type="text" id="search" placeholder="Search">
+			<input type="text" id="search" placeholder="Search" />
 		</header>
-        <main>
-            <p id="no-items">No Items</p>
-            <div id="items"></div>
-        </main>
-        <div id="modal" open>
-            <input type="text" id="url" placeholder="Enter URL">
-            <button id="add-item">Add Item</button>
-            <button id="close-modal">Cancel</button>
-        </div>
+		<main>
+			<p id="no-items">No Items</p>
+			<ul id="items">
+			</ul>
+		</main>
+		<div id="modal" open>
+			<input type="text" id="url" placeholder="Enter URL" />
+			<button id="add-item">Add Item</button>
+			<button id="close-modal">Cancel</button>
+		</div>
 		<script>
 			require('./app');
 		</script>

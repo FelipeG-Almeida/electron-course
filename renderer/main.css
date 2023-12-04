@@ -39,6 +39,11 @@ header {
     padding: 10px;
 }
 
+main {
+    flex-grow: 1;
+    overflow-y: scroll;
+}
+
 #show-modal {
     padding: 0 12px 5px;
     margin-right: 10px;
@@ -50,7 +55,7 @@ header {
 }
 
 #items {
-    flex-grow: 1;
+    padding: 0;
 }
 
 #no-items {
@@ -94,4 +99,18 @@ header {
 
 #add-item {
     margin-left: 25px;
+}
+
+.read-item {
+    align-content: center;
+    align-items: center;
+    background-color: #FAFAFA;
+    border-bottom: 2px solid lightgray;
+    display: flex;
+    padding: 10px;
+}
+
+.read-item img {
+    margin-right: 20px;
+    width: 20%;
 }
