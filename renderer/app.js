@@ -5,7 +5,23 @@ const showModal = document.getElementById('show-modal'),
 	closeModal = document.getElementById('close-modal'),
 	modal = document.getElementById('modal'),
 	addItem = document.getElementById('add-item'),
-	itemUrl = document.getElementById('url');
+	itemUrl = document.getElementById('url'),
+	search = document.getElementById('search');
+
+search.addEventListener('keyup', () => {
+	Array.from(document.getElementsByClassName('read-item')).forEach((item) => {
+		const hasMatch = item.innerText
+			.toLowerCase()
+			.includes(search.value.toLowerCase());
+		item.style.display = hasMatch ? 'flex' : 'none';
+	});
+});
+
+document.addEventListener('keydown', (e) => {
+	if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+		items.changeSelection(e.key);
+	}
+});
 
 function toogleModalButtons() {
 	if (addItem.disabled === true) {
@@ -41,7 +57,7 @@ addItem.addEventListener('click', () => {
 });
 
 ipcRenderer.on('new-item-sucess', (e, newItem) => {
-	items.addItem(newItem);
+	items.addItem(newItem, true);
 	toogleModalButtons();
 	modal.style.display = 'none';
 	itemUrl.value = '';
