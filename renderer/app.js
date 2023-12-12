@@ -8,6 +8,27 @@ const showModal = document.getElementById('show-modal'),
 	itemUrl = document.getElementById('url'),
 	search = document.getElementById('search');
 
+ipcRenderer.on('menu-show-modal', () => {
+	showModal.click();
+});
+
+ipcRenderer.on('menu-open-item', () => {
+	items.open();
+});
+
+ipcRenderer.on('menu-delete-item', () => {
+	let selectedItem = items.getSelectedItem();
+	items.delete(selectedItem.index);
+});
+
+ipcRenderer.on('menu-open-item-native', () => {
+	items.openNative();
+});
+
+ipcRenderer.on('menu-focus-search', () => {
+	search.focus();
+});
+
 search.addEventListener('keyup', () => {
 	Array.from(document.getElementsByClassName('read-item')).forEach((item) => {
 		const hasMatch = item.innerText

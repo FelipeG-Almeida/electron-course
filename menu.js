@@ -7,8 +7,37 @@ module.exports = (appWin) => {
 			submenu: [
 				{
 					label: 'Add New',
+					accelerator: 'CmdOrCtrl+O',
 					click: () => {
-						appWin.send();
+						appWin.send('menu-show-modal');
+					},
+				},
+				{
+					label: 'Read Item',
+					accelerator: 'CmdOrCtrl+Enter',
+					click: () => {
+						appWin.send('menu-open-item');
+					},
+				},
+				{
+					label: 'Delete Item',
+					accelerator: 'CmdOrCtrl+Backspace',
+					click: () => {
+						appWin.send('menu-delete-item');
+					},
+				},
+				{
+					label: 'Open in Browser',
+					accelerator: 'CmdOrCtrl+Shift+Enter',
+					click: () => {
+						appWin.send('menu-open-item-native');
+					},
+				},
+				{
+					label: 'Search Items',
+					accelerator: 'CmdOrCtrl+S',
+					click: () => {
+						appWin.send('menu-focus-search');
 					},
 				},
 			],

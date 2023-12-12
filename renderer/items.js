@@ -1,3 +1,4 @@
+const { shell } = require('electron');
 const fs = require('fs');
 
 const items = document.getElementById('items');
@@ -62,6 +63,16 @@ exports.changeSelection = (direction) => {
 		currentItem.node.classList.remove('selected');
 		currentItem.node.nextElementSibling.classList.add('selected');
 	}
+};
+
+exports.openNative = () => {
+	if (!this.storage.length) return;
+
+	const selectedItem = this.getSelectedItem();
+
+	const contentURL = selectedItem.node.dataset.url;
+
+	shell.openExternal(contentURL);
 };
 
 exports.open = () => {
